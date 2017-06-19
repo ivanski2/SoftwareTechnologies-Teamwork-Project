@@ -1,0 +1,13 @@
+﻿html {
+    overflow-y: scroll;
+}
+
+body {
+    padding: 120px;
+    background: #c1bdba;
+    font-family: 'Tahoma', sans-serif;
+}
+
+.footer {
+    visibility: hidden;
+}
