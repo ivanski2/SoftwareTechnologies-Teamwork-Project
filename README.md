@@ -1,2 +1,2 @@
 # SoftwareTechnologies-Teamwork-Project
-Uncompleted Social Network
+Software University 3.0 Teamwork Project of Module Software Technologies
