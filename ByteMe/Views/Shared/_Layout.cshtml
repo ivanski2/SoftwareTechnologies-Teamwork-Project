@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - bYte me</title>
+    <link rel="icon" href="/images/favicon.jpg">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="float-left">
+                <p class="site-title"><img src="/images/logo.jpg" alt="Site Logo"/>
+                </p>
+            </div>
+            @*@Html.ActionLink("bYte me", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <!--here are navigation to our pages,
+            the action link requires text, action's name and controller name-->
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("начало", "Index", "Home")</li>
+                <li>@Html.ActionLink("профил", "Index", "Profile")</li>
+                <li>@Html.ActionLink("поръчки", "Index", "Orders")</li>
+                <li>@Html.ActionLink("профили", "Index", "Profiles")</li>
+                <li>@Html.ActionLink("публикации", "Index", "Posts")</li>
+                <li>@Html.ActionLink("за нас", "Index", "About")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+    @RenderBody()
+    
+    <div class="footer">       
+        <div class="footer-contents">
+            <span class="left-footer">@DateTime.Now.Year &copy; Software University Team Rakija</span>
+            <span class="right-footer"><a href="https://facebook.com/bYteMe0110/"><img src="/images/facebook.png" /></a></span>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

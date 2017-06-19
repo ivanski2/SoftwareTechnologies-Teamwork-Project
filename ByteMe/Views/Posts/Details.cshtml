@@ -1,0 +1,30 @@
+﻿@using bYteMe.Models
+@model bYteMe.Post
+
+@{
+    ViewBag.Title = "детайли";
+}
+<h2>@ViewBag.Title</h2>
+<!DOCTYPE html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/Content/Posts/DetailsStyle.css">
+</head>
+<body>
+<div class="information">
+    <div class="title">
+        <p>@Model.Title</p>
+    </div>
+    <div class="author-date">
+        @{
+            bYteMeDbContext db = new bYteMeDbContext();
+            var author = db.Users.Select(u => u).FirstOrDefault(u => u.Id == Model.AuthorId);
+        }
+        <p>created on @Model.Date by @author.FullName (@author.UserName)</p>
+    </div>
+    <div class="content">
+        <p>@Model.Body</p>
+    </div>
+    @Html.ActionLink("назад", "Index", null, new { @class = "action-link" })
+</div>
+</body>

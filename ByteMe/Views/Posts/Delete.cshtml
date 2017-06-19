@@ -1,0 +1,35 @@
+﻿@model bYteMe.Post
+@{
+    ViewBag.Title = "изтриване";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/Content/Normalize.css">
+    <link rel="stylesheet" href="/Content/Posts/PostsFormsStyle.css">
+</head>
+<body>
+    <div class="form">
+        <ul class="tab-group">
+            <li class="tab" onclick="location.pathname=''">@Html.ActionLink("назад", "")</li>
+            <li class="tab active"><a>изтриване</a></li>
+        </ul>
+        <div class="tab-content">
+            @using (Html.BeginForm("Delete", "Posts"))
+            {
+                @Html.AntiForgeryToken()            
+                <div id="delete">
+                    <form action="/" method="post">
+                        <div class="top-row">                         
+                                <p>Сигурен ли си, че искаш да затриеш публикацията?</p>
+                        </div>
+                        <button class="submit-button">трий</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

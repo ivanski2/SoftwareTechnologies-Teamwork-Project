@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "за нас";
+}
+<h2>@ViewBag.Title</h2>
+<!DOCTYPE html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Href("~/Content/AboutStyle.css")"/>
+</head>
+<body>
+    <div class="information">
+        <div class="image">
+            <img id="orderImg" class="cut-out" src="/images/aboutus-photo.jpg" />
+        </div>
+        <div class="description">
+            <p>@ViewBag.DescriptionText</p>
+            <p>Използвани източници и ресурси:</p>
+            <ul>
+                <li>
+                    <a href="https://colorlib.com/wp/html5-and-css3-login-forms/">логин форма</a>
+                </li>
+                <li>
+                    много ровене в <a href="http://stackoverflow.com">stackoverflow</a>
+                </li>
+                <li>
+                    ровене като цяло
+                </li>
+                <li>
+                    забавно търсене на снимки в <a href="https://www.facebook.com/Pustinqkk/">Не е важно да си ЯК, важно е да си пустинЯК</a>
+                </li>
+                <li>
+                    всичко допринасящо за добро настроение
+                </li>
+            </ul>
+            <p>Използвани статии:</p>
+            <ul>
+                <li>
+                    <a href="http://www.findbgfood.com/rakia.htm">Rakia</a>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Bulgarian_wine">Bulgarian wine</a>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Ouzo">Ouzo</a>
+                </li>
+                <li>
+                    <a href="http://www.first-names-meanings.com/names/name-GEORGI.html">Meaning of name Georgi </a>
+                </li>
+                <li>
+                    <a href="https://www.artofsoftwaredevelopment.com/daily-life/the-10-things-that-happen-when-you-fall-in-love-with-a-programmer">The 10 Things That Happen When You Fall In Love with a Programmer</a>
+                </li>
+            </ul>
+        </div>
+        <div class="contact-us">
+            <br/>
+            <p>
+                Отбор Rakija:
+                <span class="action-link"><a href="https://facebook.com/profile.php?id=1729844621">Иван Иванов</a></span>,
+                <span class="action-link"><a href="https://facebook.com/mirela95">Мирела Дамянова</a></span>,
+                <span class="action-link"><a href="https://facebook.com/tomislav.tashev">Томислав Ташев</a></span>
+            </p>
+        </div>
+    </div>
+</body>

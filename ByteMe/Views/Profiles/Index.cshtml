@@ -1,0 +1,74 @@
+﻿@using bYteMe.Models
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@model List<bYteMe.Models.User>
+@{
+    ViewBag.Title = "профили";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>профили</title>
+    <link rel="Stylesheet" href="@Href("~/Content/Profile/ProfileStyle.css")"/>
+    <link rel="Stylesheet" href="@Href("~/Content/ProfilesStyle.css")"/>
+</head>
+<body>
+@foreach (var user in Model)
+{
+    User currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+    if (user.Id != currentUser.Id)
+    {
+        <div class="profile-info">
+            <div class="image">
+                @{
+                    var imgSrc = user.ProfilePhoto != null ? $"data:image/gif;base64,{Convert.ToBase64String(user.ProfilePhoto)}" : "../images/default-profile-picture.jpg";
+                }
+
+                <img id="profile-picture" class="cut-out" src="@imgSrc"/>
+            </div>
+            <div class="text">
+                <div class="full-name">
+                    <div id="fullName"><label>име:</label>
+                        <p class="field">@user.FullName</p>
+                    </div>
+                    <div id="userName"><label>потребителско име:</label>
+                        <p class="field">@user.UserName</p>
+                    </div>
+                </div>
+                <div class="biography">
+                    <label>биография:</label>
+                    <p class="field">@user.Biography</p>
+                </div>
+                <div class="posts">
+                    @{
+                        bYteMeDbContext db = new bYteMeDbContext();
+                        var posts = db.Posts.Select(u => u).Where(p => p.AuthorId == user.Id);
+                        if (posts.Any())
+                        {
+                            <label>публикации:</label>
+                            foreach (var post in posts)
+                            {
+                                <div class="field">
+                                    @Html.ActionLink(@post.Title, "Details", "Posts", new { id = post.Id }, new { @class = "action-link" })
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+                @*<input type="button" class="gallery-button" value="галерия" onclick="location.href = '@Url.Action("Gallery", "Profile")'"/>*@
+            </div>
+            <div class="profile-likes">
+                <div class="likes-count">харесвания:
+                    <p class="like-field">@user.Likes</p> нехаресвания:
+                    <p class="like-field">@user.Dislikes</p>
+                </div>
+                <br/>                  
+                        <div>Харесва ли ти: </div>
+                        @Html.ActionLink("да", "Like", "Profiles", new { name = user.UserName }, new { @class = "action-link" })
+                        @Html.ActionLink("не", "Dislike", "Profiles", new { name = user.UserName }, new { @class = "action-link" })               
+            </div>
+        </div>
+    }
+}
+</body>
+</html>

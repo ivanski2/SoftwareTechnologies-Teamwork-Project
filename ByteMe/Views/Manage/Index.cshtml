@@ -1,0 +1,28 @@
+﻿@model bYteMe.Models.IndexViewModel
+@{
+    ViewBag.Title = "настройки";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!DOCTYPE html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Href("~/Content/Manage/ManageStyle.css")" />
+</head>
+<body>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <dl class="dl-horizontal">
+            <h4>настройки на профила</h4>
+            <dt>парола: </dt>
+            <dd>
+                [@(Model.HasPassword ? Html.ActionLink("промяна на парола", "ChangePassword", null, new { @class = "action-link" }) : Html.ActionLink("създай", "SetPassword", null, new { @class = "action-link" }))]
+            </dd>
+            <dt>профил: </dt>
+            <dd>
+                [@Html.ActionLink("редактиране на профила", "EditProfile", null, new { @class = "action-link" })]
+            </dd>
+        </dl>
+    </div>
+</body>
